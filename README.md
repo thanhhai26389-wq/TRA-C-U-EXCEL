@@ -2,6 +2,8 @@
 
 Trang tra cứu: https://thanhhai26389-wq.github.io/TRA-C-U-EXCEL/
 
+Tải file hoặc sao chép toàn bộ mã HTML: https://thanhhai26389-wq.github.io/TRA-C-U-EXCEL/ma-html.html
+
 Trên iPhone, mở đường link trong Safari. Tìm theo tên, địa chỉ, mã hoặc số hợp đồng; chọn loại hình hoạt động, rồi bấm tên đơn vị. Greatfood thuộc loại **Cung cấp suất ăn**.
 
 ## Dữ liệu và hiển thị
@@ -15,7 +17,7 @@ Trên iPhone, mở đường link trong Safari. Tìm theo tên, địa chỉ, m�
 
 ## Cập nhật website
 
-GitHub Pages xuất bản từ nhánh `gh-pages`, thư mục gốc `/`. Nhánh này gồm `index.html` và `.nojekyll`. Đưa bản `index.html` đã kiểm tra vào nhánh `gh-pages` và đẩy lên GitHub để xuất bản phiên bản mới. Chỉ sửa nhánh `main` sẽ chưa cập nhật website.
+GitHub Pages xuất bản từ nhánh `gh-pages`, thư mục gốc `/`. Đưa bản `index.html` đã kiểm tra vào nhánh `gh-pages`, sao chép cùng bản đó thành `tra-cuu-moi.html` và đẩy lên GitHub để xuất bản phiên bản mới. `ma-html.html` cung cấp nút tải file và sao chép nguyên mã; `.nojekyll` tắt xử lý Jekyll. Chỉ sửa nhánh `main` sẽ chưa cập nhật website.
 
 ## Kiểm tra
 
