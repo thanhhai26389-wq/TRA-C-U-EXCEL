@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lấy mã HTML tra cứu suất ăn</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f1f6f5;color:#253a36;font:16px/1.6 Arial,sans-serif}main{max-width:960px;margin:24px auto;padding:24px;background:white;border-radius:14px}h1{font-size:26px;margin-top:0}a{color:#087c68}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.button,button{padding:12px 16px;border:0;border-radius:8px;background:#087c68;color:white;font:inherit;font-weight:bold;text-decoration:none;cursor:pointer}.secondary{background:#e6f2ed;color:#075f50}button:disabled{opacity:.55;cursor:wait}label{display:block;font-weight:bold;margin:16px 0 8px}textarea{display:block;width:100%;min-height:380px;padding:12px;border:1px solid #cbdad5;border-radius:8px;resize:vertical;white-space:pre;overflow:auto;font:13px/1.5 Consolas,monospace}#status{padding:12px;background:#fff2d3;border-radius:8px;overflow-wrap:anywhere}.instructions{margin-top:24px;padding:16px;border:1px solid #dce7e2;border-radius:9px}code{background:#eef3f1;padding:2px 5px}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #1d4ed8;outline-offset:3px}@media(max-width:600px){main{margin:12px;padding:16px}h1{font-size:22px}.actions>*{flex:1 1 100%;text-align:center}}
+</style>
+</head>
+<body>
+<main>
+<h1>File và mã HTML tra cứu suất ăn</h1>
+<p>Bản đầy đủ có dữ liệu tra cứu từ 4 Excel, các nhóm màu đỏ, xanh lá, xanh dương và thông tin giấy tờ. Anh có thể tải file hoặc sao chép toàn bộ mã để sửa bằng Notepad.</p>
+<div class="actions">
+<a class="button" id="download" href="tra-cuu-moi.html" download="tra-cuu-moi.html">Tải file HTML đầy đủ</a>
+<button id="copy" type="button" disabled>Sao chép toàn bộ mã</button>
+<button id="select" class="secondary" type="button" disabled>Chọn toàn bộ mã</button>
+</div>
+<p id="status" role="status" aria-live="polite">Đang lấy mã HTML đầy đủ…</p>
+<label for="code">Mã HTML — từ &lt;!doctype html&gt; đến &lt;/html&gt;</label>
+<textarea id="code" readonly spellcheck="false" wrap="off" aria-describedby="status"></textarea>
+<noscript><p>Phần hiển thị mã cần JavaScript. Anh vẫn có thể dùng nút tải file phía trên hoặc <a href="https://github.com/thanhhai26389-wq/TRA-C-U-EXCEL/blob/gh-pages/index.html">xem mã trên GitHub</a>.</p></noscript>
+<div class="instructions">
+<strong>Lưu bằng Notepad trên máy tính</strong>
+<ol>
+<li>Bấm <b>Sao chép toàn bộ mã</b>, mở Notepad và dán vào.</li>
+<li>Chọn <b>File → Save As</b>, đặt tên <code>tra-cuu-moi.html</code>.</li>
+<li>Chọn <b>Save as type: All Files (*.*)</b> và <b>Encoding: UTF-8</b>, rồi lưu.</li>
+<li>Mở file vừa lưu bằng trình duyệt để tra cứu. Dữ liệu đã nằm trong file; Google Maps cần Internet.</li>
+</ol>
+<p>Trên iPhone, anh mở <a href="./">bản tra cứu trên website</a> bằng Safari để dùng ô tìm kiếm. Nếu tải file để lưu, chọn <b>Tải xuống</b> hoặc <b>Chia sẻ → Lưu vào Tệp</b> tùy màn hình Safari.</p>
+</div>
+</main>
+<script>
+(()=>{
+const code=document.getElementById('code');
+const status=document.getElementById('status');
+const copy=document.getElementById('copy');
+const select=document.getElementById('select');
+function selectAll(){code.focus();code.select();code.setSelectionRange(0,code.value.length);}
+select.addEventListener('click',()=>{selectAll();status.textContent='Đã chọn toàn bộ mã. Anh dùng Sao chép hoặc Ctrl+C, rồi dán vào Notepad.';});
+copy.addEventListener('click',async()=>{
+ let copied=false;
+ try{
+  if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(code.value);copied=true;}
+ }catch(error){}
+ if(!copied){selectAll();try{copied=document.execCommand('copy');}catch(error){}}
+ status.textContent=copied?'Đã sao chép toàn bộ mã HTML. Anh dán vào Notepad và lưu với tên tra-cuu-moi.html, loại All Files, mã hóa UTF-8.':'Trình duyệt chưa cho sao chép tự động. Toàn bộ mã đã được chọn; anh bấm Sao chép hoặc Ctrl+C.';
+});
+fetch('tra-cuu-moi.html',{cache:'no-store'}).then(response=>{
+ if(!response.ok)throw new Error('HTTP '+response.status);
+ return response.text();
+}).then(source=>{
+ if(!/^<!doctype html>/i.test(source.trim())||!source.trim().endsWith('</html>')||!source.includes('id="packed"'))throw new Error('Thiếu nội dung HTML');
+ code.value=source;
+ document.getElementById('download').href=URL.createObjectURL(new Blob([source],{type:'text/html;charset=utf-8'}));
+ copy.disabled=false;select.disabled=false;
+ status.textContent='Đã lấy đủ mã HTML và dữ liệu. Anh có thể tải file hoặc sao chép toàn bộ mã bên dưới.';
+}).catch(error=>{
+ status.textContent='Chưa lấy được mã để hiển thị. Anh mở lại trang khi có Internet, hoặc dùng nút Tải file HTML đầy đủ phía trên.';
+});
+})();
+</script>
+</body>
+</html>
