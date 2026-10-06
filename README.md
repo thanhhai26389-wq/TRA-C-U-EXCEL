@@ -4,7 +4,7 @@ Trang tra cứu: https://thanhhai26389-wq.github.io/TRA-C-U-EXCEL/
 
 Tải file hoặc sao chép toàn bộ mã HTML: https://thanhhai26389-wq.github.io/TRA-C-U-EXCEL/ma-html.html
 
-Trên iPhone, mở đường link trong Safari. Tìm theo tên, địa chỉ, mã hoặc số hợp đồng; chọn loại hình hoạt động, rồi bấm tên đơn vị. Greatfood thuộc loại **Cung cấp suất ăn**.
+Trên iPhone, mở đường link trong Safari. Nhập tên, địa chỉ, mã hoặc số hợp đồng; chọn loại hình hoạt động, bấm **Tra cứu**, rồi bấm tên đơn vị trong kết quả. Phím Enter cũng thực hiện tra cứu. Greatfood thuộc loại **Cung cấp suất ăn**.
 
 ## Dữ liệu và hiển thị
 
